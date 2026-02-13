@@ -9,133 +9,160 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400&display=swap');
 
 * {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-height: 100vh;
-background: linear-gradient(135deg, #ff758c, #ff7eb3);
-display: flex;
-justify-content: center;
-align-items: center;
-font-family: 'Poppins', sans-serif;
-overflow: hidden;
-color: #fff;
+  height: 100vh;
+  background: radial-gradient(circle at top, #ff9a9e, #ff6a88, #ff5f8a);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+  color: #fff;
 }
 
+/* Soft glow background */
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("https://grainy-gradients.vercel.app/noise.svg");
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+/* Glass card */
 .container {
-text-align: center;
-max-width: 700px;
-padding: 30px;
-animation: fadeIn 2s ease forwards;
+  position: relative;
+  text-align: center;
+  max-width: 720px;
+  padding: 50px 40px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+  animation: rise 2s ease forwards;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 h1 {
-font-family: 'Playfair Display', serif;
-font-size: 3rem;
-margin-bottom: 20px;
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  margin-bottom: 25px;
 }
 
 .typing {
-font-size: 1.2rem;
-line-height: 1.8;
-min-height: 120px;
+  font-size: 1.2rem;
+  line-height: 1.9;
+  min-height: 160px;
+  letter-spacing: 0.3px;
 }
 
 .signature {
-margin-top: 30px;
-font-size: 1.4rem;
-font-family: 'Playfair Display', serif;
-opacity: 0;
-animation: fadeIn 2s ease forwards;
-animation-delay: 10s;
+  margin-top: 35px;
+  font-size: 1.5rem;
+  font-family: 'Playfair Display', serif;
+  opacity: 0;
+  animation: fadeIn 2s ease forwards;
+  animation-delay: 12s;
 }
 
 @keyframes fadeIn {
-from { opacity: 0; transform: translateY(20px); }
-to { opacity: 1; transform: translateY(0); }
+  to { opacity: 1; }
 }
 
 /* Floating hearts */
 .heart {
-position: absolute;
-bottom: -20px;
-font-size: 24px;
-animation: floatUp 8s linear infinite;
-opacity: 0.8;
+  position: absolute;
+  bottom: -30px;
+  font-size: 22px;
+  animation: floatUp linear forwards;
+  opacity: 0.9;
 }
 
 @keyframes floatUp {
-from {
-transform: translateY(0) scale(1);
-opacity: 1;
+  from {
+    transform: translateY(0) scale(0.8);
+    opacity: 0;
+  }
+  20% { opacity: 1; }
+  to {
+    transform: translateY(-120vh) scale(1.6);
+    opacity: 0;
+  }
 }
-to {
-transform: translateY(-110vh) scale(1.5);
-opacity: 0;
-}
+
+/* Mobile tuning */
+@media (max-width: 600px) {
+  h1 { font-size: 2.3rem; }
+  .typing { font-size: 1.05rem; }
+  .container { padding: 40px 25px; }
 }
 </style>
 </head>
+
 <body>
 
 <div class="container">
-<h1>Happy Valentine’s Day 💖</h1>
-<div class="typing" id="typing"></div>
-<div class="signature">Forever Yours 💕</div>
+  <h1>Happy Valentine’s Day 💖</h1>
+  <div class="typing" id="typing"></div>
+  <div class="signature">Forever Yours 💕</div>
 </div>
 
 <script>
 const text = [
-"Dear Komal,",
-"",
-"From the moment you came into my life,",
-"everything became brighter, warmer, and happier.",
-"",
-"Your smile is my favorite sunrise.",
-"Your laughter is my favorite melody.",
-"",
-"I am so lucky to have you in my life.",
-"You are truly special 💖"
+  "Dear Komal,",
+  "",
+  "From the moment you came into my life,",
+  "everything became brighter, warmer, and happier.",
+  "",
+  "Your smile is my favorite sunrise.",
+  "Your laughter is my favorite melody.",
+  "",
+  "I am so lucky to have you in my life.",
+  "You are truly special 💖"
 ];
 
 let line = 0;
 let char = 0;
-const speed = 50;
+const speed = 45;
 const typingDiv = document.getElementById("typing");
 
 function typeEffect() {
-if (line < text.length) {
-if (char < text[line].length) {
-typingDiv.innerHTML += text[line].charAt(char);
-char++;
-setTimeout(typeEffect, speed);
-} else {
-typingDiv.innerHTML += "<br/>";
-char = 0;
-line++;
-setTimeout(typeEffect, 500);
+  if (line < text.length) {
+    if (char < text[line].length) {
+      typingDiv.innerHTML += text[line].charAt(char);
+      char++;
+      setTimeout(typeEffect, speed);
+    } else {
+      typingDiv.innerHTML += "<br/>";
+      char = 0;
+      line++;
+      setTimeout(typeEffect, 600);
+    }
+  }
 }
-}
-}
-
 typeEffect();
 
-// Hearts
+/* Hearts generator */
 function createHeart() {
-const heart = document.createElement("div");
-heart.className = "heart";
-heart.innerHTML = "❤️";
-heart.style.left = Math.random() * 100 + "vw";
-heart.style.animationDuration = (5 + Math.random() * 5) + "s";
-document.body.appendChild(heart);
-
-setTimeout(() => heart.remove(), 9000);
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (6 + Math.random() * 6) + "s";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 12000);
 }
-
-setInterval(createHeart, 500);
+setInterval(createHeart, 700);
 </script>
 
 </body>
