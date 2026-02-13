@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Happy Valentine’s Day 💖</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400&display=swap');
+
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+height: 100vh;
+background: linear-gradient(135deg, #ff758c, #ff7eb3);
+display: flex;
+justify-content: center;
+align-items: center;
+font-family: 'Poppins', sans-serif;
+overflow: hidden;
+color: #fff;
+}
+
+.container {
+text-align: center;
+max-width: 700px;
+padding: 30px;
+animation: fadeIn 2s ease forwards;
+}
+
+h1 {
+font-family: 'Playfair Display', serif;
+font-size: 3rem;
+margin-bottom: 20px;
+}
+
+.typing {
+font-size: 1.2rem;
+line-height: 1.8;
+min-height: 120px;
+}
+
+.signature {
+margin-top: 30px;
+font-size: 1.4rem;
+font-family: 'Playfair Display', serif;
+opacity: 0;
+animation: fadeIn 2s ease forwards;
+animation-delay: 10s;
+}
+
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(20px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+/* Floating hearts */
+.heart {
+position: absolute;
+bottom: -20px;
+font-size: 24px;
+animation: floatUp 8s linear infinite;
+opacity: 0.8;
+}
+
+@keyframes floatUp {
+from {
+transform: translateY(0) scale(1);
+opacity: 1;
+}
+to {
+transform: translateY(-110vh) scale(1.5);
+opacity: 0;
+}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<h1>Happy Valentine’s Day 💖</h1>
+<div class="typing" id="typing"></div>
+<div class="signature">Forever Yours 💕</div>
+</div>
+
+<script>
+const text = [
+"Dear Komal,",
+"",
+"From the moment you came into my life,",
+"everything became brighter, warmer, and happier.",
+"",
+"Your smile is my favorite sunrise.",
+"Your laughter is my favorite melody.",
+"",
+"I am so lucky to have you in my life.",
+"You are truly special 💖"
+];
+
+let line = 0;
+let char = 0;
+const speed = 50;
+const typingDiv = document.getElementById("typing");
+
+function typeEffect() {
+if (line < text.length) {
+if (char < text[line].length) {
+typingDiv.innerHTML += text[line].charAt(char);
+char++;
+setTimeout(typeEffect, speed);
+} else {
+typingDiv.innerHTML += "<br/>";
+char = 0;
+line++;
+setTimeout(typeEffect, 500);
+}
+}
+}
+
+typeEffect();
+
+// Hearts
+function createHeart() {
+const heart = document.createElement("div");
+heart.className = "heart";
+heart.innerHTML = "❤️";
+heart.style.left = Math.random() * 100 + "vw";
+heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+document.body.appendChild(heart);
+
+setTimeout(() => heart.remove(), 9000);
+}
+
+setInterval(createHeart, 500);
+</script>
+
+</body>
+</html>
