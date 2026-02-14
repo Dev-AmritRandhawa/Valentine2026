@@ -1,169 +1,412 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Happy Valentine’s Day 💖</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day Komal 💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400&display=swap');
+```
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        overflow-x: hidden;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+    .container {
+        text-align: center;
+        z-index: 10;
+        position: relative;
+        padding: 20px;
+    }
 
-body {
-  height: 100vh;
-  background: radial-gradient(circle at top, #ff9a9e, #ff6a88, #ff5f8a);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Poppins', sans-serif;
-  overflow: hidden;
-  color: #fff;
-}
+    .main-title {
+        font-size: 4rem;
+        font-weight: bold;
+        color: #fff;
+        text-shadow: 0 0 20px rgba(255, 105, 180, 0.8),
+                     0 0 40px rgba(255, 105, 180, 0.6);
+        margin-bottom: 20px;
+        animation: titleFloat 3s ease-in-out infinite;
+        letter-spacing: 3px;
+    }
 
-/* Soft glow background */
-body::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url("https://grainy-gradients.vercel.app/noise.svg");
-  opacity: 0.15;
-  pointer-events: none;
-}
+    @keyframes titleFloat {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+    }
 
-/* Glass card */
-.container {
-  position: relative;
-  text-align: center;
-  max-width: 720px;
-  padding: 50px 40px;
-  border-radius: 24px;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(20px);
-  box-shadow: 0 30px 80px rgba(0,0,0,0.25);
-  animation: rise 2s ease forwards;
-}
+    .name {
+        font-size: 6rem;
+        font-weight: bold;
+        background: linear-gradient(45deg, #ff6b9d, #ffc371, #ff6b9d, #c471ed, #f64f59);
+        background-size: 300% 300%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: gradientShift 4s ease infinite, nameScale 2s ease-in-out infinite;
+        text-transform: uppercase;
+        letter-spacing: 8px;
+        margin: 30px 0;
+        filter: drop-shadow(0 0 30px rgba(255, 107, 157, 0.6));
+    }
 
-@keyframes rise {
-  from { opacity: 0; transform: translateY(40px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
+    @keyframes gradientShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
 
-h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 3rem;
-  margin-bottom: 25px;
-}
+    @keyframes nameScale {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+    }
 
-.typing {
-  font-size: 1.2rem;
-  line-height: 1.9;
-  min-height: 160px;
-  letter-spacing: 0.3px;
-}
+    .heart-container {
+        position: relative;
+        margin: 50px 0;
+    }
 
-.signature {
-  margin-top: 35px;
-  font-size: 1.5rem;
-  font-family: 'Playfair Display', serif;
-  opacity: 0;
-  animation: fadeIn 2s ease forwards;
-  animation-delay: 12s;
-}
+    .big-heart {
+        font-size: 10rem;
+        color: #ff1744;
+        animation: heartBeat 1.5s ease-in-out infinite;
+        display: inline-block;
+        filter: drop-shadow(0 0 30px rgba(255, 23, 68, 0.8));
+    }
 
-@keyframes fadeIn {
-  to { opacity: 1; }
-}
+    @keyframes heartBeat {
+        0%, 100% { transform: scale(1); }
+        10%, 30% { transform: scale(0.9); }
+        20%, 40% { transform: scale(1.1); }
+    }
 
-/* Floating hearts */
-.heart {
-  position: absolute;
-  bottom: -30px;
-  font-size: 22px;
-  animation: floatUp linear forwards;
-  opacity: 0.9;
-}
+    .message {
+        font-size: 2rem;
+        color: #fff;
+        margin-top: 30px;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        animation: fadeInUp 2s ease;
+        line-height: 1.6;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 
-@keyframes floatUp {
-  from {
-    transform: translateY(0) scale(0.8);
-    opacity: 0;
-  }
-  20% { opacity: 1; }
-  to {
-    transform: translateY(-120vh) scale(1.6);
-    opacity: 0;
-  }
-}
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
 
-/* Mobile tuning */
-@media (max-width: 600px) {
-  h1 { font-size: 2.3rem; }
-  .typing { font-size: 1.05rem; }
-  .container { padding: 40px 25px; }
-}
+    /* Floating Hearts */
+    .floating-heart {
+        position: absolute;
+        font-size: 2rem;
+        color: #ff1744;
+        animation: floatUp 6s ease-in infinite;
+        opacity: 0;
+    }
+
+    @keyframes floatUp {
+        0% {
+            transform: translateY(0) rotate(0deg);
+            opacity: 0;
+        }
+        10% {
+            opacity: 1;
+        }
+        90% {
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(-100vh) rotate(360deg);
+            opacity: 0;
+        }
+    }
+
+    /* Particles */
+    .particle {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background: radial-gradient(circle, #fff, #ff6b9d);
+        border-radius: 50%;
+        animation: particleFloat 8s linear infinite;
+        opacity: 0;
+    }
+
+    @keyframes particleFloat {
+        0% {
+            transform: translate(0, 0) scale(0);
+            opacity: 0;
+        }
+        10% {
+            opacity: 1;
+        }
+        90% {
+            opacity: 1;
+        }
+        100% {
+            transform: translate(var(--tx), var(--ty)) scale(1.5);
+            opacity: 0;
+        }
+    }
+
+    /* Sparkles */
+    .sparkle {
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        background: #fff;
+        border-radius: 50%;
+        animation: sparkleAnim 2s ease-in-out infinite;
+        box-shadow: 0 0 10px #fff, 0 0 20px #ff6b9d;
+    }
+
+    @keyframes sparkleAnim {
+        0%, 100% {
+            transform: scale(0);
+            opacity: 0;
+        }
+        50% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    /* Ribbon */
+    .ribbon {
+        position: absolute;
+        top: 50px;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 15px;
+        font-size: 1.5rem;
+        color: #fff;
+        font-weight: bold;
+        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        animation: ribbonSlide 3s ease infinite;
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    @keyframes ribbonSlide {
+        0%, 100% { transform: translateX(-10px); }
+        50% { transform: translateX(10px); }
+    }
+
+    /* Interactive button */
+    .love-button {
+        margin-top: 40px;
+        padding: 20px 50px;
+        font-size: 1.5rem;
+        color: #fff;
+        background: linear-gradient(45deg, #ff6b9d, #c471ed);
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        box-shadow: 0 10px 30px rgba(255, 107, 157, 0.5);
+        transition: all 0.3s ease;
+        font-weight: bold;
+        letter-spacing: 2px;
+        animation: buttonGlow 2s ease-in-out infinite;
+    }
+
+    @keyframes buttonGlow {
+        0%, 100% {
+            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.5);
+        }
+        50% {
+            box-shadow: 0 10px 50px rgba(255, 107, 157, 0.9),
+                        0 0 30px rgba(255, 107, 157, 0.6);
+        }
+    }
+
+    .love-button:hover {
+        transform: scale(1.1);
+        box-shadow: 0 15px 50px rgba(255, 107, 157, 0.8);
+    }
+
+    .love-button:active {
+        transform: scale(0.95);
+    }
+
+    /* Rose petals */
+    .petal {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: radial-gradient(ellipse at center, #ff1744 0%, #ff6b9d 100%);
+        border-radius: 50% 50% 50% 0;
+        animation: petalFall 10s linear infinite;
+        opacity: 0.8;
+    }
+
+    @keyframes petalFall {
+        0% {
+            transform: translateY(-100px) rotate(0deg);
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(100vh) rotate(720deg);
+            opacity: 0.3;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .main-title { font-size: 2.5rem; }
+        .name { font-size: 3.5rem; }
+        .big-heart { font-size: 6rem; }
+        .message { font-size: 1.3rem; padding: 0 20px; }
+        .love-button { font-size: 1.2rem; padding: 15px 35px; }
+    }
 </style>
+```
+
 </head>
-
 <body>
+    <div class="ribbon">💕 February 14, 2026 💕</div>
 
+```
 <div class="container">
-  <h1>Happy Valentine’s Day 💖</h1>
-  <div class="typing" id="typing"></div>
-  <div class="signature">Forever Yours 💕</div>
+    <h1 class="main-title">Happy Valentine's Day</h1>
+    
+    <div class="name">KOMAL</div>
+    
+    <div class="heart-container">
+        <div class="big-heart">💖</div>
+    </div>
+    
+    <p class="message">
+        You make every day feel like Valentine's Day!<br>
+        Wishing you love, joy, and endless happiness! 💕
+    </p>
+    
+    <button class="love-button" onclick="createExplosion()">Click for Magic ✨</button>
 </div>
 
 <script>
-const text = [
-  "Dear Komal,",
-  "",
-  "From the moment you came into my life,",
-  "everything became brighter, warmer, and happier.",
-  "",
-  "Your smile is my favorite sunrise.",
-  "Your laughter is my favorite melody.",
-  "",
-  "I am so lucky to have you in my life.",
-  "You are truly special 💖"
-];
-
-let line = 0;
-let char = 0;
-const speed = 45;
-const typingDiv = document.getElementById("typing");
-
-function typeEffect() {
-  if (line < text.length) {
-    if (char < text[line].length) {
-      typingDiv.innerHTML += text[line].charAt(char);
-      char++;
-      setTimeout(typeEffect, speed);
-    } else {
-      typingDiv.innerHTML += "<br/>";
-      char = 0;
-      line++;
-      setTimeout(typeEffect, 600);
+    // Create floating hearts
+    function createFloatingHeart() {
+        const heart = document.createElement('div');
+        heart.className = 'floating-heart';
+        heart.innerHTML = '❤️';
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.animationDelay = Math.random() * 3 + 's';
+        heart.style.animationDuration = (Math.random() * 3 + 5) + 's';
+        document.body.appendChild(heart);
+        
+        setTimeout(() => heart.remove(), 8000);
     }
-  }
-}
-typeEffect();
 
-/* Hearts generator */
-function createHeart() {
-  const heart = document.createElement("div");
-  heart.className = "heart";
-  heart.innerHTML = "❤️";
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.animationDuration = (6 + Math.random() * 6) + "s";
-  document.body.appendChild(heart);
-  setTimeout(() => heart.remove(), 12000);
-}
-setInterval(createHeart, 700);
+    setInterval(createFloatingHeart, 500);
+
+    // Create particles
+    function createParticle() {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.setProperty('--tx', (Math.random() - 0.5) * 500 + 'px');
+        particle.style.setProperty('--ty', (Math.random() - 0.5) * 500 + 'px');
+        particle.style.animationDelay = Math.random() * 2 + 's';
+        document.body.appendChild(particle);
+        
+        setTimeout(() => particle.remove(), 8000);
+    }
+
+    setInterval(createParticle, 200);
+
+    // Create sparkles
+    function createSparkle(x, y) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.style.left = x + 'px';
+        sparkle.style.top = y + 'px';
+        document.body.appendChild(sparkle);
+        
+        setTimeout(() => sparkle.remove(), 2000);
+    }
+
+    document.addEventListener('mousemove', (e) => {
+        if (Math.random() > 0.9) {
+            createSparkle(e.clientX, e.clientY);
+        }
+    });
+
+    // Create petals
+    function createPetal() {
+        const petal = document.createElement('div');
+        petal.className = 'petal';
+        petal.style.left = Math.random() * 100 + '%';
+        petal.style.animationDelay = Math.random() * 5 + 's';
+        petal.style.animationDuration = (Math.random() * 5 + 8) + 's';
+        document.body.appendChild(petal);
+        
+        setTimeout(() => petal.remove(), 15000);
+    }
+
+    setInterval(createPetal, 800);
+
+    // Button click explosion
+    function createExplosion() {
+        for (let i = 0; i < 50; i++) {
+            setTimeout(() => {
+                const heart = document.createElement('div');
+                heart.innerHTML = ['❤️', '💕', '💖', '💗', '💝'][Math.floor(Math.random() * 5)];
+                heart.style.position = 'fixed';
+                heart.style.left = '50%';
+                heart.style.top = '70%';
+                heart.style.fontSize = Math.random() * 30 + 20 + 'px';
+                heart.style.transform = 'translate(-50%, -50%)';
+                heart.style.pointerEvents = 'none';
+                heart.style.zIndex = '1000';
+                document.body.appendChild(heart);
+                
+                const angle = (Math.PI * 2 * i) / 50;
+                const velocity = Math.random() * 300 + 200;
+                const tx = Math.cos(angle) * velocity;
+                const ty = Math.sin(angle) * velocity - 200;
+                
+                heart.animate([
+                    { transform: 'translate(-50%, -50%) scale(1)', opacity: 1 },
+                    { transform: `translate(calc(-50% + ${tx}px), calc(-50% + ${ty}px)) scale(0) rotate(${Math.random() * 720}deg)`, opacity: 0 }
+                ], {
+                    duration: 2000,
+                    easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                });
+                
+                setTimeout(() => heart.remove(), 2000);
+            }, i * 20);
+        }
+    }
+
+    // Initial animation on load
+    window.addEventListener('load', () => {
+        for (let i = 0; i < 30; i++) {
+            setTimeout(createFloatingHeart, i * 200);
+        }
+    });
 </script>
+```
 
 </body>
 </html>
